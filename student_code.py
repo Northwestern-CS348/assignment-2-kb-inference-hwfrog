@@ -184,14 +184,14 @@ class InferenceEngine(object):
                 new_rhs = instantiate(rule.rhs, bindings)
                 new_rule = Rule([new_lhs, new_rhs], supported_by=[[fact, rule]])
                 kb.kb_add(new_rule)
-                #new_rule = kb._get_rule(new_rule)
+                new_rule = kb._get_rule(new_rule)
                 fact.supports_rules.append(new_rule)
                 rule.supports_rules.append(new_rule)
             else: # add new fact
                 new_state = instantiate(rule.rhs, bindings)
                 new_fact = Fact(new_state, supported_by=[[fact, rule]])
                 kb.kb_add(new_fact)
-                #new_fact = kb._get_fact(new_fact)
+                new_fact = kb._get_fact(new_fact)
                 fact.supports_facts.append(new_fact)
                 rule.supports_facts.append(new_fact)
         else:
